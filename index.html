@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Koi Collection</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         * {
             margin: 0;
@@ -788,6 +789,23 @@
 
         loadData();
         renderKoi();
+
+        // Netlify Identity: Handle password reset and authentication tokens
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                // Check if URL contains authentication tokens
+                const hash = window.location.hash;
+                if (hash.includes('recovery_token') || hash.includes('invite_token') || hash.includes('confirmation_token')) {
+                    // Open the identity widget to process the token
+                    window.netlifyIdentity.open();
+                }
+            });
+
+            window.netlifyIdentity.on("login", user => {
+                // After successful login/password reset, redirect to admin
+                window.location.href = '/admin.html';
+            });
+        }
     </script>
 </body>
 </html>
