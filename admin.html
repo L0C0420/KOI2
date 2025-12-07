@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Premium Koi Collection</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        // Initialize Identity Widget with proper redirects
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin.html";
+                    });
+                }
+            });
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -520,6 +532,10 @@
                 document.getElementById('adminContent').style.display = 'block';
                 loadData();
                 renderKoi();
+            } else {
+                // Not logged in, show login prompt
+                document.getElementById('loginPrompt').style.display = 'block';
+                document.getElementById('adminContent').style.display = 'none';
             }
         });
 
@@ -528,6 +544,7 @@
             document.getElementById('adminContent').style.display = 'block';
             loadData();
             renderKoi();
+            netlifyIdentity.close(); // Close the popup after login
         });
 
         netlifyIdentity.on('logout', () => {
