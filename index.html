@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koi Store - Premium Collection</title>
+    <title>Premium Koi Collection</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -30,58 +30,41 @@
             color: white;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(218, 165, 32, 0.2);
-            border: 1px solid rgba(218, 165, 32, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             position: relative;
         }
 
-        .logo-container {
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            max-width: 200px;
-            height: auto;
-            filter: drop-shadow(0 4px 8px rgba(218, 165, 32, 0.4));
-        }
-
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .subtitle {
             font-size: 1.2em;
-            color: rgba(255, 255, 255, 0.8);
+            opacity: 0.9;
         }
 
         .admin-link {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(218, 165, 32, 0.2);
-            color: #DAA520;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
             padding: 10px 20px;
             border-radius: 10px;
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(218, 165, 32, 0.3);
         }
 
         .admin-link:hover {
-            background: rgba(218, 165, 32, 0.3);
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
         }
 
         .social-links {
@@ -92,32 +75,29 @@
         }
 
         .social-link {
-            color: #DAA520;
+            color: white;
             text-decoration: none;
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 5px;
             padding: 8px 15px;
-            background: rgba(218, 165, 32, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             transition: all 0.3s;
-            border: 1px solid rgba(218, 165, 32, 0.2);
         }
 
         .social-link:hover {
-            background: rgba(218, 165, 32, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
         }
 
         .filters-section {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 32px 0 rgba(218, 165, 32, 0.2);
-            border: 1px solid rgba(218, 165, 32, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
 
         .filters-grid {
@@ -135,56 +115,46 @@
 
         .filter-group label {
             font-weight: 600;
-            color: #DAA520;
+            color: #667eea;
             font-size: 14px;
         }
 
         .filter-group select {
             padding: 10px;
-            border: 2px solid rgba(218, 165, 32, 0.3);
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #DAA520;
+            border-color: #667eea;
         }
 
         .search-box {
             width: 100%;
             padding: 12px;
-            border: 2px solid rgba(218, 165, 32, 0.3);
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
             transition: border-color 0.3s;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-
-        .search-box::placeholder {
-            color: rgba(255, 255, 255, 0.5);
         }
 
         .search-box:focus {
             outline: none;
-            border-color: #DAA520;
-            box-shadow: 0 0 12px rgba(218, 165, 32, 0.3);
+            border-color: #667eea;
         }
 
         .inventory-count {
             text-align: center;
-            color: #DAA520;
+            color: white;
             font-size: 18px;
             margin-bottom: 20px;
             padding: 10px;
-            background: rgba(218, 165, 32, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(218, 165, 32, 0.2);
         }
 
         .koi-grid {
@@ -195,40 +165,37 @@
         }
 
         .koi-card {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 32px 0 rgba(218, 165, 32, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
-            border: 1px solid rgba(218, 165, 32, 0.3);
         }
 
         .koi-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 rgba(218, 165, 32, 0.4);
-            border-color: rgba(218, 165, 32, 0.5);
+            box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.5);
         }
 
         .quantity-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
-            color: #000;
+            background: rgba(102, 126, 234, 0.95);
+            color: white;
             padding: 8px 15px;
             border-radius: 8px;
             font-weight: bold;
             z-index: 10;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
         }
 
         .out-of-stock-badge {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(100, 100, 100, 0.95);
+            background: rgba(153, 153, 153, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
@@ -241,14 +208,13 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
+            background: rgba(245, 87, 108, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
             font-weight: bold;
             z-index: 10;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
         }
 
         .media-carousel {
@@ -256,7 +222,6 @@
             width: 100%;
             height: 250px;
             overflow: hidden;
-            background: #000;
         }
 
         .media-item {
@@ -280,8 +245,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(218, 165, 32, 0.9);
-            color: #000;
+            background: rgba(255, 255, 255, 0.8);
+            color: #667eea;
             border: none;
             width: 40px;
             height: 40px;
@@ -290,12 +255,10 @@
             font-size: 20px;
             transition: all 0.3s;
             z-index: 10;
-            font-weight: bold;
         }
 
         .carousel-btn:hover {
-            background: #FFD700;
-            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.6);
+            background: rgba(255, 255, 255, 1);
         }
 
         .carousel-btn.prev {
@@ -310,13 +273,12 @@
             position: absolute;
             bottom: 10px;
             right: 10px;
-            background: rgba(218, 165, 32, 0.9);
-            color: #000;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
             padding: 5px 10px;
             border-radius: 15px;
             font-size: 12px;
             z-index: 10;
-            font-weight: bold;
         }
 
         .koi-info {
@@ -325,7 +287,7 @@
 
         .koi-name {
             font-size: 1.5em;
-            color: #DAA520;
+            color: #667eea;
             margin-bottom: 10px;
             font-weight: bold;
         }
@@ -338,32 +300,28 @@
         }
 
         .koi-detail-item {
-            background: rgba(218, 165, 32, 0.2);
+            background: rgba(102, 126, 234, 0.1);
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 12px;
-            color: #DAA520;
-            border: 1px solid rgba(218, 165, 32, 0.3);
+            color: #667eea;
         }
 
         .koi-description {
-            color: rgba(255, 255, 255, 0.8);
+            color: #666;
             margin-bottom: 15px;
             line-height: 1.6;
         }
 
         .koi-price {
             font-size: 1.8em;
-            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #764ba2;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
         .contact-btn {
-            background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -371,19 +329,17 @@
             cursor: pointer;
             width: 100%;
             margin-top: 10px;
-            transition: all 0.3s;
+            transition: transform 0.2s;
             font-size: 15px;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
         }
 
         .contact-btn:hover {
             transform: scale(1.02);
-            box-shadow: 0 6px 16px rgba(231, 76, 60, 0.5);
         }
 
         .fullscreen-overlay {
@@ -393,7 +349,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -420,8 +376,8 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(218, 165, 32, 0.9);
-            color: #000;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
             border: none;
             padding: 8px 16px;
             border-radius: 8px;
@@ -433,31 +389,29 @@
         }
 
         .close-fullscreen:hover {
-            background: #FFD700;
+            background: white;
             transform: scale(1.05);
-            box-shadow: 0 3px 10px rgba(218, 165, 32, 0.5);
+            box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
         }
 
         .fullscreen-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(218, 165, 32, 0.9);
-            color: #000;
+            background: rgba(255, 255, 255, 0.8);
+            color: #667eea;
             border: none;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 24px;
-            font-weight: bold;
             transition: all 0.3s;
             z-index: 1001;
         }
 
         .fullscreen-nav:hover {
-            background: #FFD700;
-            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.6);
+            background: white;
         }
 
         .fullscreen-nav.prev {
@@ -472,26 +426,20 @@
             text-align: center;
             color: white;
             padding: 60px 20px;
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             margin-top: 40px;
-            border: 1px solid rgba(218, 165, 32, 0.3);
         }
 
         .empty-state h2 {
             font-size: 2em;
             margin-bottom: 10px;
-            color: #DAA520;
         }
 
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
-            }
-
-            .logo {
-                max-width: 150px;
             }
 
             .koi-grid {
@@ -512,11 +460,8 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/koi-logo.png" alt="Koi Store Logo" class="logo">
-            </div>
-            <h1>KOI STORE</h1>
-            <p class="subtitle">Premium Koi Collection</p>
+            <h1>🐟 Premium Koi Collection 🐟</h1>
+            <p class="subtitle">Discover Your Perfect Koi</p>
             <div class="social-links" id="socialLinks">
                 <a href="#" class="social-link" id="whatsappLink">📱 WhatsApp</a>
                 <a href="#" class="social-link" id="instagramLink">📷 Instagram</a>
@@ -815,7 +760,7 @@
                         <div class="koi-name">${koi.name}</div>
                         ${detailsHTML}
                         <div class="koi-description">${koi.description}</div>
-                        ${koi.breeder ? `<p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-bottom: 10px;">🏆 ${koi.breeder}</p>` : ''}
+                        ${koi.breeder ? `<p style="color: #999; font-size: 13px; margin-bottom: 10px;">🏆 ${koi.breeder}</p>` : ''}
                         <div class="koi-price">R ${koi.price.toLocaleString()}</div>
                         ${koi.status !== 'sold' && !isOutOfStock && contactSettings.whatsapp ? 
                             `<a href="https://wa.me/${contactSettings.whatsapp}?text=${whatsappMsg}" target="_blank" style="text-decoration: none;">
@@ -864,3 +809,4 @@
     </script>
 </body>
 </html>
+
