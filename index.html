@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Koi Collection</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .admin-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .filters-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 14px;
+        }
+
+        .filter-group select {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .inventory-count {
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .koi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .koi-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .koi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .quantity-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(102, 126, 234, 0.95);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 10;
+            font-size: 14px;
+        }
+
+        .out-of-stock-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(153, 153, 153, 0.95);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 10;
+            font-size: 14px;
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(245, 87, 108, 0.95);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 10;
+            font-size: 14px;
+        }
+
+        .media-carousel {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .media-item {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: none;
+        }
+
+        .media-item.active {
+            display: block;
+        }
+
+        .media-item:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            color: #667eea;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .media-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            z-index: 10;
+        }
+
+        .koi-info {
+            padding: 20px;
+        }
+
+        .koi-name {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .koi-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .koi-detail-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #667eea;
+        }
+
+        .koi-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .koi-price {
+            font-size: 1.8em;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: transform 0.2s;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-overlay.active {
+            display: flex;
+        }
+
+        .fullscreen-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .fullscreen-media {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .close-fullscreen {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .close-fullscreen:hover {
+            background: white;
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .fullscreen-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            color: #667eea;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .fullscreen-nav:hover {
+            background: white;
+        }
+
+        .fullscreen-nav.prev {
+            left: 30px;
+        }
+
+        .fullscreen-nav.next {
+            right: 30px;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .empty-state h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .koi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐟 Premium Koi Collection 🐟</h1>
+            <p class="subtitle">Discover Your Perfect Koi</p>
+            <div class="social-links" id="socialLinks">
+                <a href="#" class="social-link" id="whatsappLink">📱 WhatsApp</a>
+                <a href="#" class="social-link" id="instagramLink">📷 Instagram</a>
+                <a href="#" class="social-link" id="facebookLink">👍 Facebook</a>
+            </div>
+            <a href="admin.html" class="admin-link">Admin Panel</a>
+        </header>
+
+        <div class="filters-section">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search for koi by name...">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sortSelect">
+                        <option value="none">Default Order</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="size">Size (Length)</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Price Range</label>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="0-3000">R 0 - R 3,000</option>
+                        <option value="3000-5000">R 3,000 - R 5,000</option>
+                        <option value="5000-10000">R 5,000 - R 10,000</option>
+                        <option value="10000+">R 10,000+</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Show Sold Koi</label>
+                    <select id="soldFilter">
+                        <option value="available">Available Only</option>
+                        <option value="all">Show All</option>
+                        <option value="sold">Sold Only</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventory-count" id="inventoryCount"></div>
+        <div class="koi-grid" id="koiGrid"></div>
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <h2>No Koi Found</h2>
+            <p>Try adjusting your filters or check back soon!</p>
+        </div>
+    </div>
+
+    <div class="fullscreen-overlay" id="fullscreenOverlay" onclick="closeFullscreen()">
+        <button class="close-fullscreen" onclick="closeFullscreen()">✕</button>
+        <button class="fullscreen-nav prev" onclick="navigateFullscreen(-1); event.stopPropagation()">‹</button>
+        <button class="fullscreen-nav next" onclick="navigateFullscreen(1); event.stopPropagation()">›</button>
+        <div class="fullscreen-content" onclick="event.stopPropagation()">
+            <img class="fullscreen-media" id="fullscreenMedia" style="display: none;">
+            <video class="fullscreen-media" id="fullscreenVideo" controls style="display: none;"></video>
+        </div>
+    </div>
+
+    <script>
+        let koiList = [];
+        let contactSettings = {};
+        let currentFullscreenKoi = null;
+        let currentFullscreenIndex = 0;
+
+        function loadData() {
+            const savedKoi = localStorage.getItem('koiList');
+            const savedContacts = localStorage.getItem('contactSettings');
+            if (savedKoi) koiList = JSON.parse(savedKoi);
+            if (savedContacts) {
+                contactSettings = JSON.parse(savedContacts);
+                updateContactLinks();
+            }
+        }
+
+        function updateContactLinks() {
+            const whatsappLink = document.getElementById('whatsappLink');
+            const instagramLink = document.getElementById('instagramLink');
+            const facebookLink = document.getElementById('facebookLink');
+
+            if (contactSettings.whatsapp) {
+                whatsappLink.href = `https://wa.me/${contactSettings.whatsapp}`;
+                whatsappLink.style.display = 'flex';
+            } else {
+                whatsappLink.style.display = 'none';
+            }
+
+            if (contactSettings.instagram) {
+                instagramLink.href = `https://instagram.com/${contactSettings.instagram}`;
+                instagramLink.style.display = 'flex';
+            } else {
+                instagramLink.style.display = 'none';
+            }
+
+            if (contactSettings.facebook) {
+                facebookLink.href = contactSettings.facebook;
+                facebookLink.style.display = 'flex';
+            } else {
+                facebookLink.style.display = 'none';
+            }
+        }
+
+        function createCarousel(koi, koiIndex) {
+            if (koi.media.length === 1) {
+                const mediaItem = koi.media[0];
+                if (mediaItem.type === 'image') {
+                    return `<img src="${mediaItem.url}" alt="${koi.name}" class="media-item active" onclick="openFullscreen(${koiIndex}, 0)">`;
+                } else {
+                    return `<video src="${mediaItem.url}" class="media-item active" onclick="openFullscreen(${koiIndex}, 0)" muted loop autoplay></video>`;
+                }
+            }
+
+            let html = '<div class="media-carousel">';
+            koi.media.forEach((mediaItem, index) => {
+                if (mediaItem.type === 'image') {
+                    html += `<img src="${mediaItem.url}" alt="${koi.name}" class="media-item ${index === 0 ? 'active' : ''}" onclick="openFullscreen(${koiIndex}, ${index})">`;
+                } else {
+                    html += `<video src="${mediaItem.url}" class="media-item ${index === 0 ? 'active' : ''}" onclick="openFullscreen(${koiIndex}, ${index})" muted loop ${index === 0 ? 'autoplay' : ''}></video>`;
+                }
+            });
+            html += `
+                <button class="carousel-btn prev" onclick="changeMedia(event, ${koiIndex}, -1)">‹</button>
+                <button class="carousel-btn next" onclick="changeMedia(event, ${koiIndex}, 1)">›</button>
+                <div class="media-counter">1/${koi.media.length}</div>
+            </div>`;
+            return html;
+        }
+
+        function changeMedia(event, koiIndex, direction) {
+            event.stopPropagation();
+            const card = event.target.closest('.koi-card');
+            const carousel = card.querySelector('.media-carousel');
+            const items = carousel.querySelectorAll('.media-item');
+            const counter = carousel.querySelector('.media-counter');
+            
+            let currentIndex = 0;
+            items.forEach((item, index) => {
+                if (item.classList.contains('active')) {
+                    currentIndex = index;
+                    item.classList.remove('active');
+                    if (item.tagName === 'VIDEO') item.pause();
+                }
+            });
+
+            currentIndex = (currentIndex + direction + items.length) % items.length;
+            items[currentIndex].classList.add('active');
+            if (items[currentIndex].tagName === 'VIDEO') {
+                items[currentIndex].play();
+            }
+            counter.textContent = `${currentIndex + 1}/${items.length}`;
+        }
+
+        function openFullscreen(koiIndex, mediaIndex) {
+            currentFullscreenKoi = koiIndex;
+            currentFullscreenIndex = mediaIndex;
+            displayFullscreenMedia();
+            document.getElementById('fullscreenOverlay').classList.add('active');
+        }
+
+        function displayFullscreenMedia() {
+            const filteredKoi = getFilteredKoi();
+            const koi = filteredKoi[currentFullscreenKoi];
+            const mediaItem = koi.media[currentFullscreenIndex];
+            const img = document.getElementById('fullscreenMedia');
+            const video = document.getElementById('fullscreenVideo');
+
+            if (mediaItem.type === 'image') {
+                img.src = mediaItem.url;
+                img.style.display = 'block';
+                video.style.display = 'none';
+                video.pause();
+            } else {
+                video.src = mediaItem.url;
+                video.style.display = 'block';
+                img.style.display = 'none';
+                video.play();
+            }
+
+            const prevBtn = document.querySelector('.fullscreen-nav.prev');
+            const nextBtn = document.querySelector('.fullscreen-nav.next');
+            if (koi.media.length > 1) {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+        }
+
+        function navigateFullscreen(direction) {
+            const filteredKoi = getFilteredKoi();
+            const koi = filteredKoi[currentFullscreenKoi];
+            currentFullscreenIndex = (currentFullscreenIndex + direction + koi.media.length) % koi.media.length;
+            displayFullscreenMedia();
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').classList.remove('active');
+            document.getElementById('fullscreenVideo').pause();
+        }
+
+        function getFilteredKoi() {
+            let filtered = [...koiList];
+
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            if (searchTerm) {
+                filtered = filtered.filter(koi => 
+                    koi.name.toLowerCase().includes(searchTerm) ||
+                    koi.description.toLowerCase().includes(searchTerm) ||
+                    (koi.type && koi.type.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            const priceFilter = document.getElementById('priceFilter').value;
+            if (priceFilter !== 'all') {
+                if (priceFilter === '10000+') {
+                    filtered = filtered.filter(koi => koi.price >= 10000);
+                } else {
+                    const [min, max] = priceFilter.split('-').map(Number);
+                    filtered = filtered.filter(koi => koi.price >= min && koi.price < max);
+                }
+            }
+
+            const soldFilter = document.getElementById('soldFilter').value;
+            if (soldFilter === 'available') {
+                filtered = filtered.filter(koi => koi.status !== 'sold');
+            } else if (soldFilter === 'sold') {
+                filtered = filtered.filter(koi => koi.status === 'sold');
+            }
+
+            const sortBy = document.getElementById('sortSelect').value;
+            if (sortBy === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortBy === 'size') {
+                filtered.sort((a, b) => (b.size || 0) - (a.size || 0));
+            } else if (sortBy === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+                filtered.sort((a, b) => a.order - b.order);
+            }
+
+            return filtered;
+        }
+
+        function updateInventoryCount() {
+            const available = koiList.filter(k => k.status !== 'sold').length;
+            const sold = koiList.filter(k => k.status === 'sold').length;
+            const filtered = getFilteredKoi();
+            
+            document.getElementById('inventoryCount').textContent = 
+                `Showing ${filtered.length} koi • ${available} Available • ${sold} Sold`;
+        }
+
+        function renderKoi() {
+            updateInventoryCount();
+            const grid = document.getElementById('koiGrid');
+            const emptyState = document.getElementById('emptyState');
+            grid.innerHTML = '';
+
+            const filtered = getFilteredKoi();
+
+            if (filtered.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            } else {
+                emptyState.style.display = 'none';
+            }
+
+            filtered.forEach((koi, index) => {
+                const card = document.createElement('div');
+                card.className = 'koi-card';
+                
+                let detailsHTML = '';
+                if (koi.size || koi.age || koi.gender || koi.type) {
+                    detailsHTML = '<div class="koi-details">';
+                    if (koi.type) detailsHTML += `<span class="koi-detail-item">${koi.type}</span>`;
+                    if (koi.size) detailsHTML += `<span class="koi-detail-item">${koi.size}cm</span>`;
+                    if (koi.age) detailsHTML += `<span class="koi-detail-item">${koi.age}</span>`;
+                    if (koi.gender) detailsHTML += `<span class="koi-detail-item">${koi.gender}</span>`;
+                    detailsHTML += '</div>';
+                }
+
+                const whatsappMsg = encodeURIComponent(`Hi! I'm interested in ${koi.name} (R ${koi.price.toLocaleString()})`);
+                const isOutOfStock = koi.quantity === 0 && koi.status !== 'sold';
+                const showQuantity = koi.quantity > 1;
+
+                card.innerHTML = `
+                    ${koi.status === 'sold' ? '<div class="sold-badge">SOLD</div>' : ''}
+                    ${isOutOfStock ? '<div class="out-of-stock-badge">OUT OF STOCK</div>' : ''}
+                    ${showQuantity ? `<div class="quantity-badge">${koi.quantity} Available</div>` : ''}
+                    ${createCarousel(koi, index)}
+                    <div class="koi-info">
+                        <div class="koi-name">${koi.name}</div>
+                        ${detailsHTML}
+                        <div class="koi-description">${koi.description}</div>
+                        ${koi.breeder ? `<p style="color: #999; font-size: 13px; margin-bottom: 10px;">🏆 ${koi.breeder}</p>` : ''}
+                        <div class="koi-price">R ${koi.price.toLocaleString()}</div>
+                        ${koi.status !== 'sold' && !isOutOfStock && contactSettings.whatsapp ? 
+                            `<a href="https://wa.me/${contactSettings.whatsapp}?text=${whatsappMsg}" target="_blank" style="text-decoration: none;">
+                                <button class="contact-btn">📱 Inquire on WhatsApp</button>
+                            </a>` : ''}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        document.getElementById('searchBox').addEventListener('input', renderKoi);
+        document.getElementById('sortSelect').addEventListener('change', renderKoi);
+        document.getElementById('priceFilter').addEventListener('change', renderKoi);
+        document.getElementById('soldFilter').addEventListener('change', renderKoi);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeFullscreen();
+            } else if (e.key === 'ArrowLeft' && document.getElementById('fullscreenOverlay').classList.contains('active')) {
+                navigateFullscreen(-1);
+            } else if (e.key === 'ArrowRight' && document.getElementById('fullscreenOverlay').classList.contains('active')) {
+                navigateFullscreen(1);
+            }
+        });
+
+        loadData();
+        renderKoi();
+    </script>
+</body>
+</html>
