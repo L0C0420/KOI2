@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #FFE5B4 0%, #FFDAB9 100%);
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -30,44 +30,44 @@
             color: #2c2c2c;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #FFFFE0 0%, #FFF8DC 100%);
+            background: #ffffff;
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(255, 140, 0, 0.2);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
             position: relative;
-            border: 3px solid #FFD700;
+            border: 2px solid #d0d0d0;
         }
 
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            color: #FF6347;
-            text-shadow: 2px 2px 4px rgba(255, 140, 0, 0.3);
+            color: #333333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
 
         .subtitle {
             font-size: 1.2em;
-            color: #FF8C00;
+            color: #666666;
         }
 
         .admin-link {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: #FF6347;
+            background: #888888;
             color: white;
             padding: 10px 20px;
             border-radius: 10px;
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(255, 99, 71, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .admin-link:hover {
-            background: #FF4500;
+            background: #666666;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 99, 71, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .social-links {
@@ -78,32 +78,33 @@
         }
 
         .social-link {
-            color: #FF6347;
+            color: #333333;
             text-decoration: none;
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 5px;
             padding: 8px 15px;
-            background: rgba(255, 215, 0, 0.3);
+            background: #f5f5f5;
             border-radius: 8px;
             transition: all 0.3s;
-            border: 2px solid #FFD700;
+            border: 2px solid #d0d0d0;
         }
 
         .social-link:hover {
-            background: rgba(255, 215, 0, 0.5);
+            background: #e8e8e8;
             transform: translateY(-2px);
-            color: #FF4500;
+            color: #888888;
+            border-color: #888888;
         }
 
         .filters-section {
-            background: linear-gradient(135deg, #FFFFE0 0%, #FFF8DC 100%);
+            background: #ffffff;
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 16px 0 rgba(255, 140, 0, 0.2);
-            border: 3px solid #FFD700;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
+            border: 2px solid #d0d0d0;
         }
 
         .filters-grid {
@@ -121,54 +122,58 @@
 
         .filter-group label {
             font-weight: 600;
-            color: #FF6347;
+            color: #666666;
             font-size: 14px;
         }
 
         .filter-group select {
             padding: 10px;
-            border: 2px solid #FFD700;
+            border: 2px solid #d0d0d0;
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s;
-            background: #FFFACD;
-            color: #2c2c2c;
+            background: #f9f9f9;
+            color: #333333;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #FF6347;
-            box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.2);
+            border-color: #888888;
+            box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
         }
 
         .search-box {
             width: 100%;
             padding: 12px;
-            border: 3px solid #FFD700;
+            border: 2px solid #d0d0d0;
             border-radius: 10px;
             font-size: 16px;
             transition: border-color 0.3s;
-            background: #FFFACD;
-            color: #2c2c2c;
+            background: #f9f9f9;
+            color: #333333;
         }
 
         .search-box:focus {
             outline: none;
-            border-color: #FF6347;
-            box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.2);
+            border-color: #888888;
+            box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
+        }
+
+        .search-box::placeholder {
+            color: #999999;
         }
 
         .inventory-count {
             text-align: center;
-            color: #FF6347;
+            color: #333333;
             font-size: 18px;
             margin-bottom: 20px;
             padding: 10px;
-            background: linear-gradient(135deg, #FFFFE0 0%, #FFF8DC 100%);
+            background: #ffffff;
             border-radius: 10px;
             backdrop-filter: blur(10px);
-            border: 3px solid #FFD700;
-            font-weight: bold;
+            border: 2px solid #d0d0d0;
+            font-weight: 600;
         }
 
         .koi-grid {
@@ -179,25 +184,25 @@
         }
 
         .koi-card {
-            background: linear-gradient(135deg, #FFFACD 0%, #FFEFD5 100%);
+            background: #ffffff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 32px 0 rgba(255, 140, 0, 0.3);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
-            border: 3px solid #FFD700;
+            border: 2px solid #e0e0e0;
         }
 
         .koi-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 rgba(255, 140, 0, 0.5);
+            box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.15);
         }
 
         .quantity-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(50, 205, 50, 0.95);
+            background: rgba(136, 136, 136, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
@@ -210,7 +215,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(169, 169, 169, 0.95);
+            background: rgba(153, 153, 153, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
@@ -223,7 +228,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(220, 20, 60, 0.95);
+            background: rgba(100, 100, 100, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
@@ -237,7 +242,7 @@
             width: 100%;
             height: 250px;
             overflow: hidden;
-            background: #FFF8DC;
+            background: #f5f5f5;
         }
 
         .media-item {
@@ -261,9 +266,9 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 215, 0, 0.9);
-            color: #2c2c2c;
-            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333333;
+            border: 2px solid #d0d0d0;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -275,8 +280,9 @@
         }
 
         .carousel-btn:hover {
-            background: rgba(255, 140, 0, 1);
-            color: white;
+            background: rgba(255, 255, 255, 1);
+            border-color: #888888;
+            color: #888888;
         }
 
         .carousel-btn.prev {
@@ -291,7 +297,7 @@
             position: absolute;
             bottom: 10px;
             right: 10px;
-            background: rgba(255, 99, 71, 0.9);
+            background: rgba(136, 136, 136, 0.9);
             color: white;
             padding: 5px 10px;
             border-radius: 15px;
@@ -302,12 +308,12 @@
 
         .koi-info {
             padding: 20px;
-            background: linear-gradient(135deg, #FFFACD 0%, #FFEFD5 100%);
+            background: #ffffff;
         }
 
         .koi-name {
             font-size: 1.5em;
-            color: #FF6347;
+            color: #333333;
             margin-bottom: 10px;
             font-weight: bold;
         }
@@ -320,30 +326,30 @@
         }
 
         .koi-detail-item {
-            background: rgba(255, 215, 0, 0.3);
+            background: #f5f5f5;
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 12px;
-            color: #FF6347;
-            border: 2px solid #FFD700;
+            color: #666666;
+            border: 1px solid #d0d0d0;
             font-weight: 600;
         }
 
         .koi-description {
-            color: #555;
+            color: #666666;
             margin-bottom: 15px;
             line-height: 1.6;
         }
 
         .koi-price {
             font-size: 1.8em;
-            color: #FF4500;
+            color: #555555;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
         .contact-btn {
-            background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -361,8 +367,7 @@
         }
 
         .contact-btn:hover {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #3CB371 0%, #2E8B57 100%);
+            transform: scale(1.02);
         }
 
         .fullscreen-overlay {
@@ -399,8 +404,8 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255, 215, 0, 0.95);
-            color: #2c2c2c;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333333;
             border: none;
             padding: 8px 16px;
             border-radius: 8px;
@@ -412,7 +417,7 @@
         }
 
         .close-fullscreen:hover {
-            background: #FFD700;
+            background: #ffffff;
             transform: scale(1.05);
         }
 
@@ -420,8 +425,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 215, 0, 0.95);
-            color: #2c2c2c;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333333;
             border: none;
             width: 50px;
             height: 50px;
@@ -434,7 +439,7 @@
         }
 
         .fullscreen-nav:hover {
-            background: #FFD700;
+            background: #ffffff;
         }
 
         .fullscreen-nav.prev {
@@ -447,13 +452,13 @@
 
         .empty-state {
             text-align: center;
-            color: #FF6347;
+            color: #333333;
             padding: 60px 20px;
-            background: linear-gradient(135deg, #FFFFE0 0%, #FFF8DC 100%);
+            background: #ffffff;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             margin-top: 40px;
-            border: 3px solid #FFD700;
+            border: 2px solid #d0d0d0;
         }
 
         .empty-state h2 {
@@ -834,6 +839,7 @@
     </script>
 </body>
 </html>
+
 
 
 
