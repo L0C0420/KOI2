@@ -227,20 +227,22 @@
             font-size: 14px;
         }
 
-        .media-carousel {
+      .media-carousel {
             position: relative;
             width: 100%;
             height: 250px;
             overflow: hidden;
+            background: #ffffff;
         }
 
         .media-item {
             width: 100%;
             height: 250px;
-            object-fit: cover;
+            object-fit: contain;
             cursor: pointer;
             transition: transform 0.3s;
             display: none;
+            background: #ffffff;
         }
 
         .media-item.active {
@@ -821,6 +823,7 @@
     </script>
 </body>
 </html>
+
 
 
 
