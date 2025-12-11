@@ -6,7 +6,7 @@
     <title>Premium Koi Collection</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
- <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +15,7 @@
 
        body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #4a4a4a 0%, #5d5d5d 100%);
+    background: linear-gradient(135deg, #f5e6d3 0%, #faf0e6 100%);
     min-height: 100vh;
     padding: 20px;
 }
@@ -27,26 +27,26 @@
 
       header {
     text-align: center;
-    color: #ffffff;
+    color: #2c2c2c;
     margin-bottom: 40px;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #3a3a3a 0%, #4d4d4d 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(212, 165, 116, 0.2);
     position: relative;
-    border: 1px solid rgba(150, 150, 150, 0.3);
+    border: 2px solid #d4a574;
 }
       h1 {
     font-size: 3em;
     margin-bottom: 10px;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: #2c2c2c;
+    text-shadow: 1px 1px 2px rgba(212, 165, 116, 0.2);
 }
 
       .subtitle {
     font-size: 1.2em;
-    color: #e0e0e0;
+    color: #666;
 }
 
       .admin-link {
@@ -77,31 +77,31 @@
         }
 
        .social-link {
-    color: #ffffff;
+    color: #2c2c2c;
     text-decoration: none;
     font-size: 14px;
     display: flex;
     align-items: center;
     gap: 5px;
     padding: 8px 15px;
-    background: rgba(212, 165, 116, 0.25);
+    background: rgba(212, 165, 116, 0.2);
     border-radius: 8px;
     transition: all 0.3s;
     border: 1px solid rgba(212, 165, 116, 0.4);
 }
       .social-link:hover {
-    background: rgba(212, 165, 116, 0.4);
+    background: rgba(212, 165, 116, 0.35);
     transform: translateY(-2px);
     color: #d4a574;
 }
 
        .filters-section {
-    background: linear-gradient(135deg, #3a3a3a 0%, #4d4d4d 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(150, 150, 150, 0.3);
+    box-shadow: 0 4px 16px 0 rgba(212, 165, 116, 0.15);
+    border: 2px solid #d4a574;
 }
 
         .filters-grid {
@@ -125,45 +125,47 @@
 
         .filter-group select {
             padding: 10px;
-            border: 2px solid #606060;
+            border: 2px solid #d4a574;
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s;
-            background: #4d4d4d;
-            color: #ffffff;
+            background: #ffffff;
+            color: #2c2c2c;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #d4a574;
+            border-color: #c69463;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
         .search-box {
             width: 100%;
             padding: 12px;
-            border: 2px solid #606060;
+            border: 2px solid #d4a574;
             border-radius: 10px;
             font-size: 16px;
             transition: border-color 0.3s;
-            background: #4d4d4d;
-            color: #ffffff;
+            background: #ffffff;
+            color: #2c2c2c;
         }
 
         .search-box:focus {
             outline: none;
-            border-color: #d4a574;
+            border-color: #c69463;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
     .inventory-count {
     text-align: center;
-    color: #ffffff;
+    color: #2c2c2c;
     font-size: 18px;
     margin-bottom: 20px;
     padding: 10px;
-    background: linear-gradient(135deg, #3a3a3a 0%, #4d4d4d 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(150, 150, 150, 0.3);
+    border: 2px solid #d4a574;
 }
 
         .koi-grid {
@@ -173,25 +175,26 @@
             margin-bottom: 30px;
         }
 
-       .koi-card {
+        .koi-card {
             background: #ffffff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(212, 165, 116, 0.25);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
-            border: 1px solid rgba(150, 150, 150, 0.3);
+            border: 2px solid #d4a574;
         }
+
         .koi-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 40px 0 rgba(212, 165, 116, 0.35);
         }
 
         .quantity-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(102, 126, 234, 0.95);
+            background: rgba(212, 165, 116, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
@@ -217,7 +220,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(245, 87, 108, 0.95);
+            background: rgba(220, 53, 69, 0.95);
             color: white;
             padding: 8px 15px;
             border-radius: 8px;
@@ -226,22 +229,21 @@
             font-size: 14px;
         }
 
-    .media-carousel {
+        .media-carousel {
             position: relative;
             width: 100%;
             height: 250px;
             overflow: hidden;
-            background: white !important;
+            background: #faf0e6;
         }
 
-      .media-item {
+        .media-item {
             width: 100%;
             height: 250px;
-            object-fit: contain;
+            object-fit: cover;
             cursor: pointer;
             transition: transform 0.3s;
             display: none;
-            background: white !important;
         }
 
         .media-item.active {
@@ -256,8 +258,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            color: #667eea;
+            background: rgba(212, 165, 116, 0.9);
+            color: white;
             border: none;
             width: 40px;
             height: 40px;
@@ -269,7 +271,7 @@
         }
 
         .carousel-btn:hover {
-            background: rgba(255, 255, 255, 1);
+            background: rgba(198, 148, 99, 1);
         }
 
         .carousel-btn.prev {
@@ -284,7 +286,7 @@
             position: absolute;
             bottom: 10px;
             right: 10px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(212, 165, 116, 0.9);
             color: white;
             padding: 5px 10px;
             border-radius: 15px;
@@ -292,9 +294,9 @@
             z-index: 10;
         }
 
-      .koi-info {
+        .koi-info {
             padding: 20px;
-            background: linear-gradient(135deg, #4d4d4d 0%, #5d5d5d 100%);
+            background: #ffffff;
         }
 
       .koi-name {
@@ -312,22 +314,23 @@
         }
 
   .koi-detail-item {
-    background: rgba(212, 165, 116, 0.2);
+    background: rgba(212, 165, 116, 0.15);
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
     color: #d4a574;
+    border: 1px solid rgba(212, 165, 116, 0.3);
 }
 
         .koi-description {
-            color: #e0e0e0;
+            color: #666;
             margin-bottom: 15px;
             line-height: 1.6;
         }
 
   .koi-price {
     font-size: 1.8em;
-    color: #d4a574;
+    color: #c69463;
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -388,8 +391,8 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #667eea;
+            background: rgba(212, 165, 116, 0.95);
+            color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 8px;
@@ -401,17 +404,17 @@
         }
 
         .close-fullscreen:hover {
-            background: white;
+            background: rgba(198, 148, 99, 1);
             transform: scale(1.05);
-            box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(212, 165, 116, 0.4);
         }
 
         .fullscreen-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            color: #667eea;
+            background: rgba(212, 165, 116, 0.95);
+            color: white;
             border: none;
             width: 50px;
             height: 50px;
@@ -423,7 +426,7 @@
         }
 
         .fullscreen-nav:hover {
-            background: white;
+            background: rgba(198, 148, 99, 1);
         }
 
         .fullscreen-nav.prev {
@@ -436,13 +439,13 @@
 
        .empty-state {
     text-align: center;
-    color: #ffffff;
+    color: #2c2c2c;
     padding: 60px 20px;
-    background: linear-gradient(135deg, #3a3a3a 0%, #4d4d4d 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     margin-top: 40px;
-    border: 1px solid rgba(150, 150, 150, 0.3);
+    border: 2px solid #d4a574;
 }
 
         .empty-state h2 {
@@ -823,6 +826,7 @@
     </script>
 </body>
 </html>
+
 
 
 
