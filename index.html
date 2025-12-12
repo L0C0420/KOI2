@@ -37,7 +37,20 @@
             position: relative;
             border: 2px solid #d0d0d0;
         }
+header img {
+    max-width: 600px;
+    width: 85%;
+    height: auto;
+    margin: 0 auto 30px;
+    display: block;
+}
 
+@media (max-width: 768px) {
+    header img {
+        max-width: 350px;
+        width: 90%;
+    }
+}
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
@@ -489,7 +502,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="koibetet.jpg" alt="Logo" style="max-width: 300px; width: 100%; height: auto; margin: 0 auto 20px; display: block;">
+            <img src="koibetet.jpg" alt="Logo" style="max-width: 600px; width: 85%; height: auto; margin: 0 auto 30px; display: block;">
             <h1> Premium Koi Collection </h1>
             <p class="subtitle">Discover Your Perfect Koi</p>
             <div class="social-links" id="socialLinks">
@@ -839,6 +852,7 @@
     </script>
 </body>
 </html>
+
 
 
 
