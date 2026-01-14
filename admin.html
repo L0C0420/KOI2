@@ -574,16 +574,32 @@ async function loadData() {
 
 async function saveData() {
     try {
+        // Get the current user's JWT token
+        const user = netlifyIdentity.currentUser();
+        const token = user?.token?.access_token;
+        
+        if (!token) {
+            alert('Please log in again to save changes.');
+            netlifyIdentity.open();
+            return false;
+        }
+        
         const response = await fetch('/.netlify/functions/save-koi', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 koiList,
                 contactSettings
             })
         });
         
-        if (!response.ok) throw new Error('Failed to save');
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to save');
+        }
         return true;
     } catch (error) {
         console.error('Error saving data:', error);
@@ -591,7 +607,6 @@ async function saveData() {
         return false;
     }
 }
-
 async function saveContactSettings() {
     contactSettings.whatsapp = document.getElementById('whatsappNumber').value;
     contactSettings.instagram = document.getElementById('instagramUsername').value;
@@ -881,6 +896,7 @@ function renderKoi() {
     </script>
 </body>
 </html>
+
 
 
 
