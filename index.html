@@ -574,7 +574,7 @@ header img {
 
        async function loadData() {
     try {
-        const response = await fetch('/.netlify/functions/get-koi');
+        const response = await fetch('/api/get-koi');
         if (!response.ok) throw new Error('Failed to load');
         const data = await response.json();
         koiList = data.koiList || [];
@@ -858,6 +858,7 @@ header img {
     </script>
 </body>
 </html>
+
 
 
 
