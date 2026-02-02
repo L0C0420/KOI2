@@ -554,7 +554,7 @@ netlifyIdentity.on('logout', () => {
 
 async function loadData() {
     try {
-        const response = await fetch('/.netlify/functions/get-koi');
+        const response = await fetch('/api/get-koi');
         if (!response.ok) throw new Error('Failed to load');
         const data = await response.json();
         koiList = data.koiList || [];
@@ -584,7 +584,7 @@ async function saveData() {
             return false;
         }
         
-        const response = await fetch('/.netlify/functions/save-koi', {
+        const response = await fetch('/api/get-koi', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -896,6 +896,7 @@ function renderKoi() {
     </script>
 </body>
 </html>
+
 
 
 
