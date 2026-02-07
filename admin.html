@@ -588,7 +588,7 @@ async function saveData() {
             return false;
         }
         
-        const response = await fetch('/api/get-koi', {
+        const response = await fetch('/api/save-koi', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -900,6 +900,7 @@ function renderKoi() {
     </script>
 </body>
 </html>
+
 
 
 
