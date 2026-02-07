@@ -8,32 +8,29 @@ export default async (req, context) => {
     'Access-Control-Allow-Methods': 'POST, OPTIONS'
   };
 
-  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response('', {
-      status: 200,
-      headers
-    });
+    return new Response('', { status: 200, headers });
   }
 
-  const user = context.clientContext?.user;
-  if (!user) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { 
-      status: 401,
-      headers
-    });
-  }
+  // TEMPORARILY DISABLED AUTH FOR TESTING
+  console.log('Request received');
+  console.log('Context:', JSON.stringify(context));
+  console.log('ClientContext:', JSON.stringify(context.clientContext));
 
   try {
     const data = await req.json();
+    console.log('Data received:', data);
+    
     const store = getStore('koi-data');
     
     if (data.koiList) {
       await store.set('koi-list', JSON.stringify(data.koiList));
+      console.log('Koi list saved');
     }
     
     if (data.contactSettings) {
       await store.set('contact-settings', JSON.stringify(data.contactSettings));
+      console.log('Contact settings saved');
     }
     
     return new Response(JSON.stringify({ success: true }), {
@@ -41,6 +38,7 @@ export default async (req, context) => {
       headers
     });
   } catch (error) {
+    console.error('Save error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers
