@@ -407,13 +407,17 @@
 </head>
 <body>
     <div class="container">
-        <div id="loginPrompt">
-            <h1>🔒 Admin Panel</h1>
-            <p>Please log in to access the admin panel</p>
-            <button onclick="netlifyIdentity.open()" style="max-width: 300px; margin: 20px auto; display: block;">
-                Click Here to Login
-            </button>
-        </div>
+     <div id="loginPrompt">
+    <h1>🔒 Admin Panel</h1>
+    <p>Please log in to access the admin panel</p>
+    <button onclick="netlifyIdentity.open()" style="max-width: 300px; margin: 20px auto; display: block;">
+        Click Here to Login
+    </button>
+    <button class="back-link" onclick="window.location.href='index.html'" style="max-width: 200px; margin: 20px auto; display: block;">
+        ← Back to Main Page
+    </button>
+</div>
+
 
         <div id="adminContent">
             <header>
@@ -896,6 +900,7 @@ function renderKoi() {
     </script>
 </body>
 </html>
+
 
 
 
