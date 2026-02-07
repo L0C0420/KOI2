@@ -5,15 +5,8 @@
 [functions]
   node_bundler = "esbuild"
 
+# This section is optional but can help with redirects
 [[redirects]]
   from = "/admin"
   to = "/admin.html"
   status = 200
-  force = true
-  conditions = {Role = ["admin"]}
-
-[[redirects]]
-  from = "/admin"
-  to = "/#admin-login"
-  status = 302
-  force = false
