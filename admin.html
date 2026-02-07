@@ -578,39 +578,36 @@
         }
 
         async function saveData() {
-            try {
-                const user = netlifyIdentity.currentUser();
-                const token = user?.token?.access_token;
-                
-                if (!token) {
-                    alert('Please log in again to save changes.');
-                    netlifyIdentity.open();
-                    return false;
-                }
-                
-                const response = await fetch('/api/save-koi', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({
-                        koiList,
-                        contactSettings
-                    })
-                });
-                
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to save');
-                }
-                return true;
-            } catch (error) {
-                console.error('Error saving data:', error);
-                alert('Error saving data: ' + error.message);
-                return false;
-            }
+    try {
+        // Get the admin password from prompt (or you can hardcode it)
+        const adminPassword = 'Kornel*123'; // CHANGE THIS!
+        
+        const response = await fetch('/api/save-koi', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'X-Admin-Password': adminPassword
+            },
+            body: JSON.stringify({
+                koiList,
+                contactSettings
+            })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to save');
         }
+        
+        const result = await response.json();
+        console.log('Save successful:', result);
+        return true;
+    } catch (error) {
+        console.error('Error saving data:', error);
+        alert('Error saving data: ' + error.message);
+        return false;
+    }
+}
 
         // ===== CLOUDINARY UPLOAD FUNCTION =====
         async function uploadToCloudinary(file) {
@@ -902,3 +899,4 @@
     </script>
 </body>
 </html>
+
